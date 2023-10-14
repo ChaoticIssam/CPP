@@ -21,8 +21,7 @@ int	main(){
 	obj->newZombie("Zombie");
 	randomChump("Chump");
 	destroyZombie("Chump");
-	// delete(obj);
+	delete(obj);
 	destroyZombie("Zombie");
-	// while(1){}
 	return 0;
 }

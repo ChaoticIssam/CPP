@@ -1,9 +1,9 @@
-NAME = Horde
+NAME = Attack
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SOURCES = main.cpp zombieHorde.cpp Zombie.cpp\
+SOURCES = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
 all: $(NAME)
