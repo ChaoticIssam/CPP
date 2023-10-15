@@ -5,10 +5,10 @@
 #include "Weapon.hpp"
 
 class	HumanB{
-	Weapon		weapon;
+	std::string	weapon;
 	std::string	name;
 	public:
-		void	attack(std::string name);
+		void	attack();
 };
 
 #endif
