@@ -1,4 +1,5 @@
 #include "Weapon.hpp"
+#include "stdio.h"
 
 Weapon::Weapon(){
 

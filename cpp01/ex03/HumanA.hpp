@@ -5,11 +5,10 @@
 #include <iostream>
 
 class	HumanA{
-	std::string	weapon;
+	Weapon	&weapon;
 	std::string	name;
 	public:
-		HumanA();
-			HumanA(std::string name, Weapon weaponType);
+		HumanA(std::string name, Weapon &weaponType);
 		~HumanA();
 		void	attack();
 };
