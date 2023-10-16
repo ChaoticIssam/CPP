@@ -1,22 +1,25 @@
-#include <fstream>
-#include <iostream>
-#include <sstream>
+#include "replace.hpp"
 
 int	main(int ac, char **av){
+	Replace	obj;
 	if (ac != 4){
-		std::cout << "Error: Not enough arguments provided." << std::endl;
+		obj.errorPrint(1);
 		return 1;
 	}
+	obj.setSub(av[2]);
+	obj.setRep(av[3]);
+	if (!obj.checkParameters())
+		return 0;
 	std::ifstream	inf(av[1]);
 	if (!inf){
-		std::cout << "Error: Uh oh, this file does not exist." << std::endl;
+		obj.errorPrint(2);
 		return 1;
 	}
 	std::string		name = av[1];
 	name = name + ".replace";
 	std::ofstream	outf(name);
 	if (outf.is_open()){
-		outf << inf;
+		obj.openFile(outf, inf);
 		outf.close();
 	}
 }
