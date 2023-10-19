@@ -1,4 +1,4 @@
-#include "replace.hpp"
+#include "Replace.hpp"
 
 void	Replace::setSub(char *str){
 	this->sub = str;
@@ -26,9 +26,10 @@ void	Replace::openFile(std::ofstream &outf, std::ifstream &inf){
 
 	while (std::getline(inf, line)){
 		size_t	found = line.find(sub);
-		if (found != std::string::npos){
+		while (found != std::string::npos){
 			line.erase(found, sub.length());
 			line.insert(found, rep);
+			found = line.find(sub, found + sub.length());
 		}
 		outf << line;
 		outf << std::endl;

@@ -2,7 +2,7 @@ NAME = Replace
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
-SOURCES = main.cpp replace.cpp\
+SOURCES = main.cpp Replace.cpp\
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

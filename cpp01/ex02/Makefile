@@ -7,7 +7,7 @@ SOURCE = main.cpp\
 OBJECT = ${SOURCE:.cpp=.o}
 all: $(NAME)
 $(NAME): $(SOURCE)
-			$(CC) $(FLAGS) -fsanitize=address -g3 -o $(NAME) $(SOURCE)
+			$(CC) $(FLAGS) -o $(NAME) $(SOURCE)
 clean:
 		$(RM) $(OBJECT)
 fclean: clean
