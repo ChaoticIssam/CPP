@@ -7,8 +7,8 @@ SOURCES = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
 all: $(NAME)
-$(NAME): $(SOURCES)
-			$(CC) $(FLAGS) -fsanitize=address -g -o $(NAME) $(SOURCES)
+$(NAME): $(OBJECTS)
+			$(CC) $(FLAGS) $(SOURCES) -o $(NAME) 
 clean:
 		$(RM) $(OBJECTS)
 fclean: clean

@@ -18,7 +18,5 @@ int	main(){
 		obj.setType("Crude spiked club");
 		jim.attack();
 	}
-	while (1){
-	}
 	return 0;
 }

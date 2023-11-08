@@ -6,9 +6,9 @@
 class	Zombie{
 	std::string	name;
 	public:
+		~Zombie();
 		void	announce(void);
 		void	setter(std::string name);
-		void	getter(int index);
 };
 
 Zombie	*zombieHorde(int N, std::string name);

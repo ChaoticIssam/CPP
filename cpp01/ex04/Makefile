@@ -7,8 +7,8 @@ SOURCES = main.cpp Replace.cpp\
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)
-$(NAME): $(SOURCES)
-			$(CC) $(FLAGS) -o $(NAME) $(SOURCES)
+$(NAME): $(OBJECTS)
+			$(CC) $(FLAGS) $(SOURCES) -o $(NAME) 
 clean:
 		$(RM) $(OBJECTS)
 fclean: clean

@@ -5,6 +5,5 @@ void	Zombie::setter(std::string name){
 }
 
 void	Zombie::announce(void){
-	static int i;
-	std::cout << name << i++ << " :Moar brainz!" << std::endl;
+	std::cout << name << " :Moar brainz!" << std::endl;
 }

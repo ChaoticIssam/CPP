@@ -1,9 +1,9 @@
-NAME = Attack
+NAME = Fixed
 CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SOURCES = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp\
+SOURCES = main.cpp Fixed.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
 all: $(NAME)

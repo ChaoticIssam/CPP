@@ -2,15 +2,17 @@
 #define		ZOMBIE_HPP
 
 # include <iostream>
-# include <cctype>
 
-class	Zombie{
+class	Zombie
+{
 	std::string	name;
 	public:
-		void	setterZombie(std::string name);
+		Zombie(std::string name);
+		~Zombie();
 		void	announce(void);
-		Zombie*	newZombie(std::string nom);
 		void	affZombie(void);
 };
+Zombie*	newZombie(std::string nom);
+void	randomChump(std::string name);
 
 #endif

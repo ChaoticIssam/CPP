@@ -3,6 +3,6 @@
 int	main(){
 
 	Harl	obj;
-	obj.complain("error");
+	obj.complain("");
 	return 0;
 }

@@ -17,16 +17,13 @@ void	Harl::error(void){
 }
 
 void	Harl::complain(std::string level){
-	void	(Harl::*debugPtr)(void) = &Harl::debug;
-	void	(Harl::*infoPtr)(void) = &Harl::info;
-	void	(Harl::*warningPtr)(void) = &Harl::warning;
-	void	(Harl::*errorPtr)(void) = &Harl::error;
-	if (level == "debug")
-		(this->*debugPtr)();
-	if (level == "info")
-		(this->*infoPtr)();
-	if (level == "warning")
-		(this->*warningPtr)();
-	if (level == "error")
-		(this->*errorPtr)();
+	std::string	ptr[] = {"debug", "info", "warning", "error"};
+	int		index = 0;
+	void	(Harl::*debugPtr[])(void) = {&Harl::debug,&Harl::info, &Harl::warning, &Harl::error};
+
+	while (index <= 3){
+		if (level == ptr[index])
+			(this->*debugPtr[index])();
+		index++;
+	}
 }

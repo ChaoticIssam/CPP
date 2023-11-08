@@ -4,12 +4,12 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 SOURCE = main.cpp\
 
-OBJECT = ${SOURCE:.cpp=.o}
+OBJECTS = ${SOURCE:.cpp=.o}
 all: $(NAME)
-$(NAME): $(SOURCE)
-			$(CC) $(FLAGS) -o $(NAME) $(SOURCE)
+$(NAME): $(OBJECTS)
+			$(CC) $(FLAGS) $(SOURCE) -o $(NAME)
 clean:
-		$(RM) $(OBJECT)
+		$(RM) $(OBJECTS)
 fclean: clean
 		$(RM) $(NAME)
 re:	fclean all 

@@ -1,8 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie*	Zombie::newZombie(std::string nom){
-	Zombie  *obj = new Zombie;
-	setterZombie(nom);
-	announce();
-    return obj; 
+Zombie*	newZombie(std::string nom){
+	Zombie  *obj = new Zombie(nom);
+    return obj;
 }

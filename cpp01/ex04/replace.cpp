@@ -29,7 +29,7 @@ void	Replace::openFile(std::ofstream &outf, std::ifstream &inf){
 		while (found != std::string::npos){
 			line.erase(found, sub.length());
 			line.insert(found, rep);
-			found = line.find(sub, found + sub.length());
+			found = line.find(sub, found + rep.length());
 		}
 		outf << line;
 		outf << std::endl;

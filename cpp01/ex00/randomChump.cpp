@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 
-void	Zombie::setterZombie(std::string name){
-	this->name = name;
+void	randomChump(std::string name){
+	Zombie	obj = Zombie(name);
+	obj.affZombie();
 }
