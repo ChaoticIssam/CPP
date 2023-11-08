@@ -21,7 +21,7 @@ Fixed::Fixed(const int i){
 
 Fixed::Fixed(const float f){
 	std::cout << "Float constructor has been called." << std::endl;
-	store_fixed = (f / (1 << frac_bits_num));
+	store_fixed = roundf(f * (1 << frac_bits_num));
 }
 
 Fixed&	Fixed::operator = (const Fixed &obj){
@@ -47,6 +47,6 @@ int		Fixed::getRawBits(void) const{
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
-    os << obj.store_fixed;
+    os << obj.toFloat();
     return os;
 }
