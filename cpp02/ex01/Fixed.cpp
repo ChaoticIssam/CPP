@@ -2,7 +2,7 @@
 
 Fixed::Fixed(){
 	std::cout << "Default constructor has been called." << std::endl;
-	this->store_fixed = 0;
+	this->setRawBits(0);
 }
 
 Fixed::~Fixed(){
@@ -16,7 +16,7 @@ Fixed::Fixed(const Fixed &obj){
 
 Fixed::Fixed(const int i){
 	std::cout << "Int constructor has been called." << std::endl;
-	store_fixed = i * (1 << frac_bits_num);
+	store_fixed = i << frac_bits_num;
 }
 
 Fixed::Fixed(const float f){
@@ -24,7 +24,7 @@ Fixed::Fixed(const float f){
 	store_fixed = roundf(f * (1 << frac_bits_num));
 }
 
-Fixed&	Fixed::operator = (const Fixed &obj){
+Fixed&	Fixed::operator=(const Fixed &obj){
 	std::cout << "Copy assignment operator overload has been called." << std::endl;
 	this->store_fixed = obj.getRawBits();
 	return (*this);

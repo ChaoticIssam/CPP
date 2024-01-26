@@ -1,9 +1,9 @@
-NAME = Fixed
+NAME = ClapTrap
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SOURCES = main.cpp Fixed.cpp\
+SOURCES = main.cpp ClapTrap.cpp ScravTrap.cpp FragTrap.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
 all: $(NAME)

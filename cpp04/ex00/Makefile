@@ -1,9 +1,9 @@
-NAME = Fixed
+NAME = Animal
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SOURCES = main.cpp Fixed.cpp\
+SOURCES = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
 all: $(NAME)
