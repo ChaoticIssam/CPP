@@ -30,6 +30,6 @@ Dog::~Dog(){
     delete Braiiiin;
 }
 
-void    Dog::makeSound() const{
+void    Dog::makeSound(){
     std::cout << "Barking..." << std::endl;
 }

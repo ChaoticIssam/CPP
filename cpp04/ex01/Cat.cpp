@@ -18,16 +18,18 @@ Cat::Cat(const Cat& obj){
 
 Cat& Cat::operator=(const Cat& obj){
     std::cout << "Cat's copy assignement operator overload has been called!" << std::endl;
-    this->type = obj.type;
-    
+    delete Braiiiin;
+    this->Braiiiin = obj.Braiiiin;
+    for (int i = 0; i < 100; i++)
+        this->Braiiiin[i] = obj.Braiiiin[i];
     return *this;
 }
 
 Cat::~Cat(){
     std::cout << "Cat's destructor has been called!" << std::endl;
-    delete[] Braiiiin;
+    delete Braiiiin;
 }
 
-void    Cat::makeSound(){
+void    Cat::makeSound() const{
     std::cout << "Purring..." << std::endl; 
 }

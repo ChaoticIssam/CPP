@@ -31,5 +31,5 @@ std::string    WrongAnimal::getType(){
 }
 
 void    WrongAnimal::makeSound(){
-    
+
 }
