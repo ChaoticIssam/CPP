@@ -8,7 +8,11 @@
 class Form;
 
 class	Bureaucrat{
+<<<<<<< HEAD
 	const std::string	_name;
+=======
+	std::string	name;
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 	int			grade;
 	public:
 		Bureaucrat();
@@ -16,7 +20,11 @@ class	Bureaucrat{
 		Bureaucrat(Bureaucrat& obj);
 		Bureaucrat& operator=(Bureaucrat& obj);
 		~Bureaucrat();
+<<<<<<< HEAD
 		const std::string	getName();
+=======
+		std::string	getName();
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 		int	getGrade();
 		void	incrementGrade(void);
 		void	decrementGrade(void);

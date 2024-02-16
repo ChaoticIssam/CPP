@@ -9,10 +9,17 @@
 class Bureaucrat;
 
 class	Form{
+<<<<<<< HEAD
 	const std::string _name;
 	bool				_signed;
 	const int			_gradeSign;
 	const int			_gradeExec;
+=======
+	std::string _name;
+	bool				_signed;
+	int			_gradeSign;
+	int			_gradeExec;
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 	public:
 		Form();
 		Form(std::string name, int gradeSign, int gradeExec);

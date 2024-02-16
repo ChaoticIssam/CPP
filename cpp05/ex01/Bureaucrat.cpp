@@ -1,11 +1,21 @@
 #include "Bureaucrat.hpp"
 
+<<<<<<< HEAD
 Bureaucrat::Bureaucrat() : _name("DEFAULT"), grade(150){
 	std::cout << "Bureaucrat's default constructor has been called." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 	std::cout << "Bureaucrat's parametrized constructor has been called." << std::endl;
+=======
+Bureaucrat::Bureaucrat() : name("DEFAULT"), grade(150){
+
+	std::cout << "Default constructor has been called." << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade){
+	this->name = name;
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
@@ -13,12 +23,18 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 	this->grade = grade;
 }
 
+<<<<<<< HEAD
 Bureaucrat::Bureaucrat(Bureaucrat& obj) : _name(obj._name){
 	std::cout << "Bureaucrat's copy constructor has been called." << std::endl;
+=======
+Bureaucrat::Bureaucrat(Bureaucrat& obj){
+	std::cout << "Copy constructor has been called." << std::endl;
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 	*this = obj;
 }
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat& obj){
+<<<<<<< HEAD
 	std::cout << "Bureaucrat's copy assignement operator overload has been called." << std::endl;
 	this->grade = obj.grade;
 	return (*this);
@@ -26,6 +42,16 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat& obj){
 
 const std::string	Bureaucrat::getName(){
 	return _name;
+=======
+	std::cout << "Copy assignement operator overload has been called." << std::endl;
+	this->grade = obj.grade;
+	this->name = obj.name;
+	return (*this);
+}
+
+std::string	Bureaucrat::getName(){
+	return name;
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 }
 
 int	Bureaucrat::getGrade(){
@@ -45,16 +71,27 @@ void	Bureaucrat::decrementGrade(){
 }
 
 Bureaucrat::~Bureaucrat(){
+<<<<<<< HEAD
 	std::cout << "Bureaucrat's destructor has been called." << std::endl;
+=======
+
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 }
 
 void Bureaucrat::signForm(Form &form) {
   try {
     form.beSigned(*this);
+<<<<<<< HEAD
     std::cout << this->_name << " signed " << form.getName() << std::endl;
   }
   catch (std::exception &e){
     std::cout << this->_name << " couldn't sign " << form.getName()
+=======
+    std::cout << this->name << " signed " << form.getName() << std::endl;
+  }
+  catch (std::exception &e){
+    std::cout << this->name << " couldn't sign " << form.getName()
+>>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
               << " because " << e.what() << std::endl;
   }
 }
