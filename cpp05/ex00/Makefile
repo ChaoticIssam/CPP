@@ -6,10 +6,7 @@ RM = rm -rf
 SOURCES = main.cpp Bureaucrat.cpp\
 
 OBJECTS = ${SOURCES:.cpp=.o}
-<<<<<<< HEAD
 
-=======
->>>>>>> b77d12f1a4bac5578e8b021f8de8dc20acce85da
 all: $(NAME)
 $(NAME): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(NAME)

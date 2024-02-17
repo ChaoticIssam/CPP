@@ -20,29 +20,35 @@ Intern::~Intern(){
 
 int Intern::returnCase(std::string forName){
     std::string cases[] = {"Presidential Pardon", "Robotomy Request", "Shrubbery Creation"};
-    int         caseIndex = 1;
-    while (caseIndex <= 3){
+    int         caseIndex = 0;
+    while (caseIndex <= 2){
         if (forName == cases[caseIndex])
             return (caseIndex);
         caseIndex ++;
     }
-    return (0);
+    return (-1);
 }
 
 AForm*   Intern::makeForm(std::string formName, std::string formTarget){
     int x = returnCase(formName);
+    AForm *Form = NULL;
     switch(x){
+        case 0 :
+            std::cout << "Intern creates " <<  formName << std::endl;
+            Form = new PresidentialPardonForm(formTarget);
+            return(Form);
         case 1 :
             std::cout << "Intern creates " <<  formName << std::endl;
-            return(&PresidentialPardonForm(formTarget));
+            Form = new RobotomyRequestForm(formTarget);
+            return (Form);
         case 2 :
             std::cout << "Intern creates " <<  formName << std::endl;
-            return (&RobotomyRequestForm(formTarget));
-        case 3 :
-            std::cout << "Intern creates " <<  formName << std::endl;
-            return (&ShrubberyCreationForm(formTarget));
+            Form = new ShrubberyCreationForm(formTarget);
+            return (Form);
         default :
             std::cout << "ERROR: " << formName << " is not a valid form." << std::endl;
+            break;
     }
+    return Form;
 }
 
