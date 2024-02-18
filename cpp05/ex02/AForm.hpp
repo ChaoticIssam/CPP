@@ -13,7 +13,7 @@ class AForm{
 	const int			_gradeExec;
 	public:
 		AForm();
-		AForm(std::string name, bool signd, int gradeSign, int gradeExec);
+		AForm(std::string name, int gradeSign, int gradeExec);
 		AForm(AForm& obj);
 		AForm&	operator=(AForm& obj);
 		~AForm();
@@ -30,7 +30,7 @@ class AForm{
 			public:
 				const char* what() const throw();
 		};
-		virtual void	execute(Bureaucrat const & executor) = 0;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 };
 std::ostream &	operator<<(std::ostream & out, AForm & obj);
 

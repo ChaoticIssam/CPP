@@ -1,11 +1,11 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("DEFAULT"), grade(150){
-	std::cout << "Bureaucrat's default constructor has been called." << std::endl;
+	// std::cout << "Bureaucrat's default constructor has been called." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
-	std::cout << "Bureaucrat's parametrized constructor has been called." << std::endl;
+	// std::cout << "Bureaucrat's parametrized constructor has been called." << std::endl;
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
@@ -14,17 +14,17 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat& obj) : _name(obj._name){
-	std::cout << "Bureaucrat's copy constructor has been called." << std::endl;
+	// std::cout << "Bureaucrat's copy constructor has been called." << std::endl;
 	*this = obj;
 }
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat& obj){
-	std::cout << "Bureaucrat's copy assignement operator overload has been called." << std::endl;
+	// std::cout << "Bureaucrat's copy assignement operator overload has been called." << std::endl;
 	this->grade = obj.grade;
 	return (*this);
 }
 
-const std::string	Bureaucrat::getName(){
+std::string	Bureaucrat::getName() const{
 	return _name;
 }
 
@@ -45,7 +45,7 @@ void	Bureaucrat::decrementGrade(){
 }
 
 Bureaucrat::~Bureaucrat(){
-	std::cout << "Bureaucrat's destructor has been called." << std::endl;
+	// std::cout << "Bureaucrat's destructor has been called." << std::endl;
 }
 
 void Bureaucrat::signForm(AForm &form) {
@@ -60,15 +60,12 @@ void Bureaucrat::signForm(AForm &form) {
 }
 
 void	Bureaucrat::executeForm(AForm const &form){
-	if (form.getGradeSign() >= this->grade)
-    	std::cout << _name << " executed " << form.getName() << std::endl;
-	else
-		std::cout << _name << " failed to execute " << form.getName() << std::endl;
-}
-
-std::ostream &	operator<<(std::ostream & out, Bureaucrat & b)	{
-	out << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
-	return (out);
+  try {
+    form.execute(*this);
+  } catch (std::exception &e) {
+    std::cout << this->_name << " cannot execute " << form.getName()
+              << " because " << e.what() << std::endl;
+  }
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw(){
