@@ -9,6 +9,7 @@ int main(){
         if (as != NULL){
             as->beSigned(a);
             as->execute(a);
+            delete as;
         }
     }
     catch(std::exception &e){
