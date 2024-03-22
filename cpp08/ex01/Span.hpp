@@ -13,6 +13,7 @@ class Span{
 		void	addNumber(int n);
 		int		shortestSpan();
 		int		longestSpan();
+		void	addManyNumbers(int arr[], unsigned int size);
 
 };
 
