@@ -14,12 +14,12 @@ class BitcoinExchange{
 	private:
 		std::map<std::string, float> _currencies;
 	public:
-		std::map<std::string, float> _BitcoinHolded;
 		BitcoinExchange();
 		~BitcoinExchange();
 		void addCurrency(std::string currency, float value);
 		void printCurrencies();
 		void fillCurrencies(std::string filename);
+		void	printValue(std::string date, float value);
 };
 void	file2Parssing(std::string filename, BitcoinExchange &exchange);
 void	parssLine(std::string line, BitcoinExchange &exchange);

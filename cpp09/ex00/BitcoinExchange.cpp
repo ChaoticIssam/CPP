@@ -50,48 +50,96 @@ void	file2Parssing(std::string filename, BitcoinExchange &exchange){
 
 void	parssLine(std::string line, BitcoinExchange &exchange){
 	size_t	pos = line.find("|");
+	int count = 0;
 	if (pos == std::string::npos){
 		std::cout << "Error: Bad input => " << line << std::endl;
 		return ;
 	}
 	std::string date = line.substr(0, pos);
+	if (date[pos + 1]){
+		std::cout << "Error: invalid date format" << std::endl;
+		return ;
+	}
+	if (!checkDate(date))
+		return ;
 	std::string valueStr = line.substr(pos + 1);
-	for (size_t i = 0; i < valueStr.size(); i++){
+	if (valueStr[0] != ' '){
+		std::cout << "Error: invalid value format" << std::endl;
+		return ;
+	}
+	for (size_t i = 1; i < valueStr.size(); i++){
+		if (i == 1 && (valueStr[i] == '-' || valueStr[i] == '+'))
+			i++;
+		if (valueStr[i] == '.')
+			count++;
 		if (i == 0 && valueStr[i] == ' ')
 			i++;
 		if (valueStr[i] < '0' || valueStr[i] > '9'){
-			if (valueStr[i] != '.' && valueStr[i] != '-'){
+			if (valueStr[i] != '.'){
 				std::cout << "Error: not num value" << std::endl;
 				return ;
 			}
 		}
+		if (count > 1){
+			std::cout << "Error: invalid value format" << std::endl;
+			return ;
+		}
 	}
-	if (!checkDate(date))
-		return ;
 	float value = std::atof(line.substr(pos + 1).c_str());
 	if (!checkValue(value))
 		return ;
-	exchange._BitcoinHolded[date] = value;
+	exchange.printValue(date, value);
+	
+}
+
+void	BitcoinExchange::printValue(std::string date, float value){
+	(void) value;
+	std::map<std::string, float>::iterator it = this->_currencies.lower_bound(date);
+	if (it != this->_currencies.begin())
+		it--;
+	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+    
 }
 
 bool	checkDate(std::string date){
-	if (date.size() != 11){
+	int countDash = 0;
+	for (size_t i = 0; i < date.size(); i++)
+		if (date[i] == '-')
+			countDash++;
+	if (countDash != 2){
 		std::cout << "Error: invalid date format" << std::endl;
 		return false;
 	}
-	else if (date[4] != '-' || date[7] != '-'){
+	size_t	pos = date.find("-");
+	std::string yearStr = date.substr(0, pos);
+	size_t	pos2 = date.find("-", pos + 1);
+	std::string monthStr = date.substr(pos + 1, pos2 - pos - 1);
+	size_t pos3 = date.find(" ", pos2 + 1);
+	std::string dayStr = date.substr(pos2 + 1, pos3 - pos2 - 1);
+	int year = std::atoi(yearStr.c_str());
+	int month = std::atoi(monthStr.c_str());
+	int day = std::atoi(dayStr.c_str());
+	if (yearStr.size() < 4 || monthStr.size() < 1 || monthStr.size() > 2 || dayStr.size() < 1 || dayStr.size() > 2){
 		std::cout << "Error: invalid date format" << std::endl;
 		return false;
 	}
-	else{
-		for (int i = 0; i < 10; i++){
-			if (i == 4 || i == 7)
-				continue;
-			if (date[i] < '0' || date[i] > '9'){
-				std::cout << "Error: not num value" << std::endl;
-				return false;
-			}
+	if (year < 2009 || (year == 2009 && month < 1) || (year == 2009 && month == 1 && day < 2)){
+		std::cout << "Error: invalid date format" << std::endl;
+		return false;
+	}
+	else if (month == 2){
+		if (day > 28){
+			std::cout << "Error: invalid date format" << std::endl;
+			return false;
 		}
+	}
+	else if (month < 1 || month > 12){
+		std::cout << "Error: invalid date format" << std::endl;
+		return false;
+	}
+	else if (day < 1 || day > 31){
+		std::cout << "Error: invalid date format" << std::endl;
+		return false;
 	}
 	return true;
 }
