@@ -14,6 +14,8 @@ void RPN::run(std::string input){
 	std::string token;
 	std::istringstream iss(input);
 	while (iss >> token){
+		if (token.size() > 1)
+			throw "Error: invalid argument";
 		if (token == "+")
 			add();
 		else if (token == "-")
@@ -22,15 +24,8 @@ void RPN::run(std::string input){
 			mul();
 		else if (token == "/")
 			div();
-		else{
-			for (size_t i = 0; i<token.size(); i++){
-				if (!isdigit(token[i]))
-					throw "Error: invalid argument";
-			}
-			if (std::stoi(token) < 0 || std::stoi(token) > 9)
-				throw "Error: invalid argument";
+		else
 			push(std::stoi(token));
-		}
 	}
 }
 
