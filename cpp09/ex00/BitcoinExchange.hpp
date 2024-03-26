@@ -25,5 +25,7 @@ void	file2Parssing(std::string filename, BitcoinExchange &exchange);
 void	parssLine(std::string line, BitcoinExchange &exchange);
 bool	checkDate(std::string date);
 bool	checkValue(float value);
+bool isLeapYear(int year);
+int returnDays(int year);
 
 #endif

@@ -128,7 +128,11 @@ bool	checkDate(std::string date){
 		return false;
 	}
 	else if (month == 2){
-		if (day > 28){
+		if (isLeapYear(year) && day > 29){
+			std::cout << "Error: invalid date format" << std::endl;
+			return false;
+		}
+		else if (!isLeapYear(year) && day > 28){
 			std::cout << "Error: invalid date format" << std::endl;
 			return false;
 		}
@@ -142,6 +146,17 @@ bool	checkDate(std::string date){
 		return false;
 	}
 	return true;
+}
+
+bool isLeapYear(int year) {
+    if (year % 4 != 0)
+        return false;
+    else if (year % 100 != 0)
+        return true;
+    else if (year % 400 != 0)
+        return false;
+    else
+        return true;
 }
 
 bool	checkValue(float value){
