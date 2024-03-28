@@ -8,4 +8,5 @@ void	BigPair(int ac, char **av, std::vector<int> &mainVec);
 
 bool checkValues(std::string &s);
 
-std::vector<int> thefunc(int ac, char **av);
+std::vector<int> thefuncVector(int ac, char **av);
+std::deque<int> thefuncDeque(int ac, char **av);
